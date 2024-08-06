@@ -21,6 +21,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        textView.isVisible = false
+        textView.isVisible = savedInstanceState.getBoolean("isVisible")
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean("isVisible", textView.isVisible)
     }
 }
